@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcac4d50f8183d941bf463ad8f150463, type: 3}
+  m_Name: Level1
+  m_EditorClassIdentifier: 
+  waves:
+  - maxSpawnedAtOnce: 8
+    timeBetweenSpawns: 1.5
+    enemyTypesToSpawn:
+    - entityToSpawn: {fileID: 8935849628730326503, guid: de4b831a1057e194e839d286cc61b117, type: 3}
+      probabilityToSpawn: 1
+      countEntitiesToSpawn: 10
+      VFXWhenSpawned: {fileID: 0}
+      particleSystemSpawnModifier:
+        positionSpawnOffset: {x: 0, y: 0, z: 0}
+        scaleMultiplication: {x: 0, y: 0, z: 0}
+        rotationSpawnOffset: {x: 0, y: 0, z: 0}
+      SFXWhenSpawn: {fileID: 0}
+  - maxSpawnedAtOnce: 10
+    timeBetweenSpawns: 1
+    enemyTypesToSpawn:
+    - entityToSpawn: {fileID: 2004466207708568925, guid: 5ab53b66eccaa824f99138225c5c0828, type: 3}
+      probabilityToSpawn: 1
+      countEntitiesToSpawn: 15
+      VFXWhenSpawned: {fileID: 0}
+      particleSystemSpawnModifier:
+        positionSpawnOffset: {x: 0, y: 0, z: 0}
+        scaleMultiplication: {x: 0, y: 0, z: 0}
+        rotationSpawnOffset: {x: 0, y: 0, z: 0}
+      SFXWhenSpawn: {fileID: 0}
+  - maxSpawnedAtOnce: 10
+    timeBetweenSpawns: 0.5
+    enemyTypesToSpawn:
+    - entityToSpawn: {fileID: 2004466207708568925, guid: 5ab53b66eccaa824f99138225c5c0828, type: 3}
+      probabilityToSpawn: 0.5
+      countEntitiesToSpawn: 5
+      VFXWhenSpawned: {fileID: 0}
+      particleSystemSpawnModifier:
+        positionSpawnOffset: {x: 0, y: 0, z: 0}
+        scaleMultiplication: {x: 0, y: 0, z: 0}
+        rotationSpawnOffset: {x: 0, y: 0, z: 0}
+      SFXWhenSpawn: {fileID: 0}
+    - entityToSpawn: {fileID: 8935849628730326503, guid: de4b831a1057e194e839d286cc61b117, type: 3}
+      probabilityToSpawn: 0.5
+      countEntitiesToSpawn: 5
+      VFXWhenSpawned: {fileID: 0}
+      particleSystemSpawnModifier:
+        positionSpawnOffset: {x: 0, y: 0, z: 0}
+        scaleMultiplication: {x: 0, y: 0, z: 0}
+        rotationSpawnOffset: {x: 0, y: 0, z: 0}
+      SFXWhenSpawn: {fileID: 0}
