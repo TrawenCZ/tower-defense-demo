@@ -25,7 +25,7 @@ public abstract class Projectile : MonoBehaviour
     private void Update()
     {
         this.timeSinceLaunch += Time.deltaTime;
-        if (this.timeSinceLaunch > LifeSpan) ProjectileLanded(null);
+        if (this.timeSinceLaunch > LifeSpan) DestroyProjectile(null);
         if (Target == null)
         {
             if (!directionSet)
@@ -38,17 +38,19 @@ public abstract class Projectile : MonoBehaviour
         }
         else
         {
-            lastTargetLocation = Target.transform.position;
+            lastTargetLocation = Target.transform.position + new Vector3(0, 0.75f, 0);
             this.transform.position += Speed * Time.deltaTime * Vector3.Normalize(lastTargetLocation - this.transform.position);
         }
     }
 
+    private void DestroyProjectile(Enemy hitEnemy)
+    {
+        Instantiate(_onHitParticleSystem, this.transform.position, Quaternion.identity);
+        ProjectileLanded(hitEnemy);
+    }
+
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Enemy>(out Enemy hitEnemy))
-        {
-            Instantiate(_onHitParticleSystem, this.transform.position, this.transform.rotation);
-            ProjectileLanded(hitEnemy);
-        }
+        DestroyProjectile(other.gameObject.GetComponent<Enemy>());
     }
 }

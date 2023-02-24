@@ -40,13 +40,13 @@ public class Enemy : MonoBehaviour
     {
         GameObject.FindObjectOfType<Player>().Resources += Reward;
         OnDeath?.Invoke();
-        Instantiate(_onDeathParticlePrefab, this.transform.position, this.transform.rotation);
+        Instantiate(_onDeathParticlePrefab, this.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
     private void CastleOrTowerHit()
     {
-        Instantiate(_onSuccessParticlePrefab, this.transform.position, this.transform.rotation);
+        Instantiate(_onSuccessParticlePrefab, this.transform.position, Quaternion.identity);
         OnDeath?.Invoke();
         Destroy(gameObject);
     }
