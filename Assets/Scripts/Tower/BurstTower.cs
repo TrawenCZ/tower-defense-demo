@@ -7,7 +7,7 @@ public class BurstTower : Tower
 
     protected override Enemy FindTarget()
     {
-        return Physics.OverlapSphere(this.transform.position, FireRange)
+        return Physics.OverlapSphere(this.transform.position, _fireRange)
             .Where(obj => obj.gameObject.TryGetComponent(out Enemy enemy))
             .OrderByDescending(enemy => enemy.gameObject.GetComponent<Enemy>().Health.HealthValue)
             .FirstOrDefault()?.gameObject.GetComponent<Enemy>();
@@ -19,12 +19,12 @@ public class BurstTower : Tower
         {
             LaunchProjectile();
             shouldLaunchSecondProjectile = false;
-            ShotDelay = 3.0f; 
+            _shotDelay = 3.0f; 
         } else
         {
             LaunchProjectile();
             shouldLaunchSecondProjectile = true;
-            ShotDelay = 0.2f;
+            _shotDelay = 0.2f;
         }
     }
 }

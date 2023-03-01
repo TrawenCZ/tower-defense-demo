@@ -87,9 +87,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _onHitParticleSystem: {fileID: 198801791596541968, guid: 9ece51bd9b1ecd845994078aefd1ee45, type: 3}
-  Damage: 25
-  Speed: 5
-  LifeSpan: 5
+  _damage: 25
+  _speed: 5
+  _lifeSpan: 5
   Target: {fileID: 0}
 --- !u!54 &8852629587161436110 stripped
 Rigidbody:

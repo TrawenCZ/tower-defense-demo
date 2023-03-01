@@ -11,16 +11,15 @@ public class Tower : MonoBehaviour
     [SerializeField] protected Transform _objectToPan;
     [SerializeField] protected Transform _projectileSpawn;
     [SerializeField] private GameObject _previewPrefab;
-
+    [SerializeField] protected int _fireRange;
+    [SerializeField] protected float _shotDelay;
     public HealthComponent Health => _healthComponent;
     public BoxCollider Collider => _boxCollider;
     public GameObject BuildingPreview => _previewPrefab;
 
     public int Price;
-    public int FireRange;
-    public float ShotDelay;
     private float shotCooldown;
-    protected Enemy ChosenTarget;
+    private Enemy ChosenTarget;
 
     protected void Start()
     {
@@ -41,7 +40,7 @@ public class Tower : MonoBehaviour
 
     protected bool TargetInRange()
     {
-        return Vector3.Distance(this.transform.position, ChosenTarget.transform.position) <= FireRange;
+        return Vector3.Distance(this.transform.position, ChosenTarget.transform.position) <= _fireRange;
     }
 
     protected virtual void FireAtTarget()
@@ -82,7 +81,7 @@ public class Tower : MonoBehaviour
         if (ChosenTarget != null && TargetInRange())
         {
             FireAtTarget();
-            this.shotCooldown = ShotDelay;
+            this.shotCooldown = _shotDelay;
             return;
         }
         ChosenTarget = FindTarget();
@@ -90,7 +89,7 @@ public class Tower : MonoBehaviour
         {
             LookAtTarget();
             FireAtTarget();
-            this.shotCooldown = ShotDelay;
+            this.shotCooldown = _shotDelay;
         }
     }
 }

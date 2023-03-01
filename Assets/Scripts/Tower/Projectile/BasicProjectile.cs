@@ -5,7 +5,7 @@ public class BasicProjectile : Projectile
     {
         if (hitEnemy != null)
         {
-            hitEnemy.Health.HealthValue -= Damage;
+            hitEnemy.Health.HealthValue -= _damage;
         }
         Destroy(gameObject);
     }

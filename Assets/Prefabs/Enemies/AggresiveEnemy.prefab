@@ -97,9 +97,9 @@ MonoBehaviour:
   _attackLayerMask:
     serializedVersion: 2
     m_Bits: 2048
-  Damage: 40
-  Reward: 10
-  Speed: 5
+  _damage: 40
+  _reward: 10
+  _speed: 5
 --- !u!114 &2866792057627005200 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -6762690824921041619, guid: 3cad5af2698934f4a8f5c3c3963f7075, type: 3}

@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MovementComponent), typeof(HealthComponent), typeof(BoxCollider))]
@@ -11,12 +9,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected ParticleSystem _onDeathParticlePrefab;
     [SerializeField] protected ParticleSystem _onSuccessParticlePrefab;
     [SerializeField] protected LayerMask _attackLayerMask;
+    [SerializeField] protected int _damage;
+    [SerializeField] private int _reward;
+    [SerializeField] private int _speed;
 
     public HealthComponent Health => _healthComponent;
     public event Action OnDeath;
-    public int Damage;
-    public int Reward;
-    public int Speed;
     protected float TimeSinceLastStop;
 
     protected void Start()
@@ -33,12 +31,12 @@ public class Enemy : MonoBehaviour
 
     public void Init(EnemyPath path)
     {
-        _movementComponent.Init(path, Speed);
+        _movementComponent.Init(path, _speed);
     }
 
     protected void HandleDeath()
     {
-        GameObject.FindObjectOfType<Player>().Resources += Reward;
+        GameObject.FindObjectOfType<Player>().Resources += _reward;
         OnDeath?.Invoke();
         Instantiate(_onDeathParticlePrefab, this.transform.position, Quaternion.identity);
         Destroy(gameObject);
@@ -55,7 +53,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<Castle>(out Castle hitCastle))
         {
-            hitCastle.Health.HealthValue -= Damage;
+            hitCastle.Health.HealthValue -= _damage;
             CastleOrTowerHit();
         }
         else if (other.gameObject.TryGetComponent<Tower>(out Tower hitTower))

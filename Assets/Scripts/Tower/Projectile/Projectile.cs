@@ -7,10 +7,10 @@ public abstract class Projectile : MonoBehaviour
     [SerializeField] protected Rigidbody _rb;
     [SerializeField] protected LayerMask _enemyLayerMask;
     [SerializeField] protected ParticleSystem _onHitParticleSystem;
+    [SerializeField] protected int _damage;
+    [SerializeField] private int _speed;
+    [SerializeField] private float _lifeSpan;
 
-    public int Damage;
-    public int Speed;
-    public float LifeSpan;
     private float timeSinceLaunch;
     public Enemy Target;
     private Vector3 lastTargetLocation;
@@ -25,7 +25,7 @@ public abstract class Projectile : MonoBehaviour
     private void Update()
     {
         this.timeSinceLaunch += Time.deltaTime;
-        if (this.timeSinceLaunch > LifeSpan) DestroyProjectile(null);
+        if (this.timeSinceLaunch > _lifeSpan) DestroyProjectile(null);
         if (Target == null)
         {
             if (!directionSet)
@@ -33,13 +33,13 @@ public abstract class Projectile : MonoBehaviour
                 directionSet = true;
                 directionOfShot = Vector3.Normalize(lastTargetLocation - this.transform.position);
             }
-            this.transform.position += Speed * Time.deltaTime * directionOfShot;
+            this.transform.position += _speed * Time.deltaTime * directionOfShot;
             
         }
         else
         {
             lastTargetLocation = Target.transform.position + new Vector3(0, 0.75f, 0);
-            this.transform.position += Speed * Time.deltaTime * Vector3.Normalize(lastTargetLocation - this.transform.position);
+            this.transform.position += _speed * Time.deltaTime * Vector3.Normalize(lastTargetLocation - this.transform.position);
         }
     }
 

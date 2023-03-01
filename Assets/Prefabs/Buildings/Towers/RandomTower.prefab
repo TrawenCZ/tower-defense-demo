@@ -103,9 +103,9 @@ MonoBehaviour:
   _objectToPan: {fileID: 1015304551235273097}
   _projectileSpawn: {fileID: 3473032216752895462}
   _previewPrefab: {fileID: 4867485716912935487, guid: c31a04426cfe34946a0b31e154e6b8f1, type: 3}
+  _fireRange: 10
+  _shotDelay: 2
   Price: 300
-  FireRange: 10
-  ShotDelay: 2
 --- !u!4 &1015304551235273097 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5510945952753364857, guid: 70dd3cb786b458c4f8d809752ac73117, type: 3}

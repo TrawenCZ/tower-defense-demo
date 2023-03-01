@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -8,7 +6,6 @@ public class AggresiveEnemy : Enemy
     private const int attackRange = 10;
     private Tower chosenTarget = null;
 
-    // Update is called once per frame
     void Update()
     {
         if (chosenTarget != null) return;
@@ -27,6 +24,6 @@ public class AggresiveEnemy : Enemy
 
     private void OnCollisionEnter(Collision other)
     {
-        EnemyCollided(other, Damage);
+        EnemyCollided(other, _damage);
     }
 }

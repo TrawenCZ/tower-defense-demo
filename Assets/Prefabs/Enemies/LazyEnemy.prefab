@@ -111,6 +111,6 @@ MonoBehaviour:
   _attackLayerMask:
     serializedVersion: 2
     m_Bits: 2048
-  Damage: 25
-  Reward: 25
-  Speed: 3
+  _damage: 25
+  _reward: 25
+  _speed: 3

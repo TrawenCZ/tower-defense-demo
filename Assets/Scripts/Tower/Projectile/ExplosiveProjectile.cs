@@ -13,7 +13,7 @@ public class ExplosiveProjectile : Projectile
             .Where(obj => obj.gameObject.TryGetComponent(out Enemy enemy))
             .Select(enemy => enemy.gameObject.GetComponent<Enemy>())
             .ToList()
-            .ForEach(enemy => enemy.Health.HealthValue -= Damage);
+            .ForEach(enemy => enemy.Health.HealthValue -= _damage);
     }
 
     protected override void ProjectileLanded(Enemy hitEnemy)

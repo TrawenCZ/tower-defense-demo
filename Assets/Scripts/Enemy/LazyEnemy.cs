@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LazyEnemy : Enemy
@@ -29,6 +27,6 @@ public class LazyEnemy : Enemy
 
     private void OnCollisionEnter(Collision other)
     {
-        EnemyCollided(other, Damage * 2);
+        EnemyCollided(other, _damage * 2);
     }
 }
