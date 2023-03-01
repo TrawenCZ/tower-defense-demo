@@ -44,9 +44,8 @@ public class Enemy : MonoBehaviour
 
     private void CastleOrTowerHit()
     {
-        Instantiate(_onSuccessParticlePrefab, this.transform.position, Quaternion.identity);
-        OnDeath?.Invoke();
-        Destroy(gameObject);
+        this._reward = 0;
+        this.Health.HealthValue = 0;
     }
 
     protected void EnemyCollided(Collision other, int damageToTower)

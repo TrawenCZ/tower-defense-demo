@@ -17,13 +17,13 @@ public class HealthComponent : MonoBehaviour
         get { return _health; }
         set
         {
-            _health = value;
-            OnHealthChange?.Invoke(_health);
-
-            if (_health <= 0)
+            if (value <= 0 && IsAlive)
             {
                 OnDeath?.Invoke();
             }
+
+            _health = value;
+            OnHealthChange?.Invoke(_health);
         }
     }
 
