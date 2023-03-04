@@ -7,7 +7,7 @@ public class BurstTower : Tower
 
     protected override Enemy FindTarget()
     {
-        return Physics.OverlapSphere(this.transform.position, _fireRange)
+        return Physics.OverlapSphere(transform.position, _fireRange)
             .Where(obj => obj.gameObject.TryGetComponent(out Enemy enemy))
             .OrderByDescending(enemy => enemy.gameObject.GetComponent<Enemy>().Health.HealthValue)
             .FirstOrDefault()?.gameObject.GetComponent<Enemy>();

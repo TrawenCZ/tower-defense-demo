@@ -5,7 +5,7 @@ public class RandomTower : Tower
 {
     protected override Enemy FindTarget()
     {
-        Enemy[] potentialTargets = Physics.OverlapSphere(this.transform.position, _fireRange)
+        Enemy[] potentialTargets = Physics.OverlapSphere(transform.position, _fireRange)
             .Where(obj => obj.gameObject.TryGetComponent(out Enemy enemy))
             .Select(enemy => enemy.gameObject.GetComponent<Enemy>())
             .ToArray();

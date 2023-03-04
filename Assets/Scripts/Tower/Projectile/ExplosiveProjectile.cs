@@ -9,7 +9,7 @@ public class ExplosiveProjectile : Projectile
 
     private void DoDamage()
     {
-         Physics.OverlapSphere(this.transform.position, explosiveRange)
+         Physics.OverlapSphere(transform.position, explosiveRange)
             .Where(obj => obj.gameObject.TryGetComponent(out Enemy enemy))
             .Select(enemy => enemy.gameObject.GetComponent<Enemy>())
             .ToList()

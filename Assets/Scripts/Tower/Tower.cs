@@ -24,8 +24,8 @@ public class Tower : MonoBehaviour
     protected void Start()
     {
         _healthComponent.OnDeath += HandleDeath;
-        this.shotCooldown = 0;
-        this.ChosenTarget = null;
+        shotCooldown = 0;
+        ChosenTarget = null;
     }
 
     private void OnDestroy()
@@ -40,7 +40,7 @@ public class Tower : MonoBehaviour
 
     protected bool TargetInRange()
     {
-        return Vector3.Distance(this.transform.position, ChosenTarget.transform.position) <= _fireRange;
+        return Vector3.Distance(transform.position, ChosenTarget.transform.position) <= _fireRange;
     }
 
     protected virtual void FireAtTarget()
@@ -61,7 +61,7 @@ public class Tower : MonoBehaviour
 
     protected bool ShouldShoot()
     {
-        this.shotCooldown -= Time.deltaTime;
+        shotCooldown -= Time.deltaTime;
         if (shotCooldown <= 0)
         {
             return true;
@@ -71,7 +71,7 @@ public class Tower : MonoBehaviour
 
     private void LookAtTarget()
     {
-        this._objectToPan.LookAt(ChosenTarget.transform.position);
+        _objectToPan.LookAt(ChosenTarget.transform.position);
     }
 
     protected void Update()
@@ -81,7 +81,7 @@ public class Tower : MonoBehaviour
         if (ChosenTarget != null && TargetInRange())
         {
             FireAtTarget();
-            this.shotCooldown = _shotDelay;
+            shotCooldown = _shotDelay;
             return;
         }
         ChosenTarget = FindTarget();
@@ -89,7 +89,7 @@ public class Tower : MonoBehaviour
         {
             LookAtTarget();
             FireAtTarget();
-            this.shotCooldown = _shotDelay;
+            shotCooldown = _shotDelay;
         }
     }
 }

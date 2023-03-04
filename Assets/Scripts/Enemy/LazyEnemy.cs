@@ -7,21 +7,21 @@ public class LazyEnemy : Enemy
 
     void Update()
     {
-        this.TimeSinceLastStop += Time.deltaTime;
+        TimeSinceLastStop += Time.deltaTime;
         if (shouldStop)
         {
             timeSinceLastMove += Time.deltaTime;
             if (timeSinceLastMove > 1)
             {
                 shouldStop = false;
-                this._movementComponent.MoveAlongPath();
+                _movementComponent.MoveAlongPath();
                 timeSinceLastMove = 0;
+                TimeSinceLastStop = 0;
             }
-        } else if (this.TimeSinceLastStop > 5)
+        } else if (TimeSinceLastStop > 5)
         {
             shouldStop = true;
-            this._movementComponent.CancelMovement();
-            this.TimeSinceLastStop = 0;
+            _movementComponent.CancelMovement();
         }
     }
 

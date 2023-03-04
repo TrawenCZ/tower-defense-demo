@@ -20,8 +20,8 @@ public class Enemy : MonoBehaviour
     protected void Start()
     {
         _healthComponent.OnDeath += HandleDeath;
-        this.TimeSinceLastStop = 0;
-        this._movementComponent.MoveAlongPath();
+        TimeSinceLastStop = 0;
+        _movementComponent.MoveAlongPath();
     }
 
     private void OnDestroy()
@@ -38,14 +38,14 @@ public class Enemy : MonoBehaviour
     {
         GameObject.FindObjectOfType<Player>().Resources += _reward;
         OnDeath?.Invoke();
-        Instantiate(_onDeathParticlePrefab, this.transform.position, Quaternion.identity);
+        Instantiate(_onDeathParticlePrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
     private void CastleOrTowerHit()
     {
-        this._reward = 0;
-        this.Health.HealthValue = 0;
+        _reward = 0;
+        Health.HealthValue = 0;
     }
 
     protected void EnemyCollided(Collision other, int damageToTower)

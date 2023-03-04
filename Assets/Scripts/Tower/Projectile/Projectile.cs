@@ -24,28 +24,28 @@ public abstract class Projectile : MonoBehaviour
 
     private void Update()
     {
-        this.timeSinceLaunch += Time.deltaTime;
-        if (this.timeSinceLaunch > _lifeSpan) DestroyProjectile(null);
+        timeSinceLaunch += Time.deltaTime;
+        if (timeSinceLaunch > _lifeSpan) DestroyProjectile(null);
         if (Target == null)
         {
             if (!directionSet)
             {
                 directionSet = true;
-                directionOfShot = Vector3.Normalize(lastTargetLocation - this.transform.position);
+                directionOfShot = Vector3.Normalize(lastTargetLocation - transform.position);
             }
-            this.transform.position += _speed * Time.deltaTime * directionOfShot;
+            transform.position += _speed * Time.deltaTime * directionOfShot;
             
         }
         else
         {
             lastTargetLocation = Target.transform.position + new Vector3(0, 0.75f, 0);
-            this.transform.position += _speed * Time.deltaTime * Vector3.Normalize(lastTargetLocation - this.transform.position);
+            transform.position += _speed * Time.deltaTime * Vector3.Normalize(lastTargetLocation - transform.position);
         }
     }
 
     private void DestroyProjectile(Enemy hitEnemy)
     {
-        Instantiate(_onHitParticleSystem, this.transform.position, Quaternion.identity);
+        Instantiate(_onHitParticleSystem, transform.position, Quaternion.identity);
         ProjectileLanded(hitEnemy);
     }
 

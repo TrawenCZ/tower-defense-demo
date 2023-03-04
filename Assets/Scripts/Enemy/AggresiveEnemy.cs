@@ -9,17 +9,17 @@ public class AggresiveEnemy : Enemy
     void Update()
     {
         if (chosenTarget != null) return;
-        Tower firstTowerInRange = Physics.OverlapSphere(this.transform.position, attackRange)
+        Tower firstTowerInRange = Physics.OverlapSphere(transform.position, attackRange)
             .Where(obj => obj.gameObject.TryGetComponent(out Tower tower))
-            .OrderBy(tower => Vector3.Distance(tower.transform.position, this.transform.position))
+            .OrderBy(tower => Vector3.Distance(tower.transform.position, transform.position))
             .FirstOrDefault()?.gameObject.GetComponent<Tower>();
         if (firstTowerInRange != null)
         {
-            this._movementComponent.MoveTowards(firstTowerInRange.transform);
+            _movementComponent.MoveTowards(firstTowerInRange.transform);
             chosenTarget = firstTowerInRange;
             return;
         }
-        this._movementComponent.MoveAlongPath();
+        _movementComponent.MoveAlongPath();
     }
 
     private void OnCollisionEnter(Collision other)
